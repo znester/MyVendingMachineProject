@@ -3,6 +3,7 @@ package com.techelevator;
 import com.sun.source.tree.NewArrayTree;
 import com.techelevator.view.Menu;
 
+import java.awt.*;
 import java.util.Scanner;
 
 public class VendingMachineCLI {
@@ -17,6 +18,8 @@ public class VendingMachineCLI {
 	private static final String PURCHASE_MENU_OPTION_DEPOSIT_MONEY = "Feed Money";
 	private static final String PURCHASE_MENU_OPTION_END_TRANSACTION = "End Transaction";
 	private static final String PURCHASE_MENU_OPTION_RETURN_TO_MAIN_MENU = "Main Menu";
+
+	//Feed money options
 
 
 	//Menu collections
@@ -49,8 +52,7 @@ public class VendingMachineCLI {
 					System.out.print("Deposit how much? ");
 
 //
-					Integer input = Integer.parseInt(menu.getIn().nextLine());
-//					vendMachine.feedMoney(input);
+
 				}
 
 
@@ -68,6 +70,7 @@ public class VendingMachineCLI {
 			}
 			}
 		}
+		//public int
 
 
 	public static void main(String[] args) {

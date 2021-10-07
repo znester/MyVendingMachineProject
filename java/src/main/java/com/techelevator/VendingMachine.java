@@ -1,13 +1,16 @@
 package com.techelevator;
+//import com.techelevator.Product;
+
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.text.DecimalFormat;
 import java.util.*;
 
-public class VendingMachine {
 
-    private SortedMap<String, Stack<Product>> inventory = new TreeMap<>(); //String = slot identifier , Stack<product> = inventory place content
+public class VendingMachine{
+
+    private SortedMap<String, Stack<Product>> inventory = new TreeMap<String, Stack<Product>>(); //String = slot identifier , Stack<product> = inventory place content
     private CoinBox vmCoinBox = new CoinBox();
 
 
@@ -22,7 +25,7 @@ public class VendingMachine {
                 String [] newProDetail = line.split("\\|");
                //building the main inventory map
                 Product newProduct = new Product(newProDetail[1],newProDetail[2],newProDetail[3]);
-                Stack<Product> fiveOfNewProd = new Stack<>();
+                Stack<Product> fiveOfNewProd = new Stack<Product>();
                 for(int i = 0; i < 5; i++){
                     fiveOfNewProd.push(newProduct);
                 }
@@ -46,7 +49,7 @@ public class VendingMachine {
                     DecimalFormat df = new DecimalFormat("0.00");
 
                     System.out.println(entry.getKey() + " | " + entry.getValue().peek().getName() + " | $" + df.format(price) + " | " + entry.getValue().size());
-//Use String format to look pretty
+                    //Use String format to look pretty
                 }else{
 
                     System.out.println(entry.getKey() + "  is empty. ");

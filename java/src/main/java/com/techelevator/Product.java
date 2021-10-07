@@ -11,8 +11,8 @@ public class Product {
         this.productType = productType;
         Double priceDbl = Double.valueOf(price);
         this.price = (int)(priceDbl*100);
-
     }
+    public Product(){}
 
     public String getName() {
         return name;

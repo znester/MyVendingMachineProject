@@ -10,11 +10,6 @@ public class Menu {
 	private PrintWriter out;//Writes to file
 	private Scanner in;//Scans input
 
-	//Get method we added********************
-	public Scanner getIn() {
-		return this.in;
-	}
-	//***************************************
 
 	public Menu(InputStream input, OutputStream output) {//Cont sets input/output
 		this.out = new PrintWriter(output);
