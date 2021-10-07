@@ -57,12 +57,12 @@ public class VendingMachine {
         }
 
 
-    public void feedMoney(){
-
+    public void feedMoney(int feedDollars){
+            vmCoinBox.feed(feedDollars);
         }
 
     public void selectProduct(){
-
+            this.displayItems();
         }
 
         
@@ -70,6 +70,10 @@ public class VendingMachine {
     public void finishTransaction(){
 
         }
+
+    public void exitDialogue() {
+        System.out.println("Thank you for using Vendomatic4000, have a nice day.");
+    }
 
     }
 

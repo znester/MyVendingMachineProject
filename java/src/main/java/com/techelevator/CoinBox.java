@@ -10,9 +10,20 @@ public class CoinBox {
         this.moneyDeposited =0;
     }
 
-    public void withdraw() {
-
+    public void feed(int amount) {
+        this.moneyDeposited += amount;
     }
+
+    public void spend(int amount) {
+        this.moneyDeposited -= amount;
+    }
+
+    public double makeChange(int amountDeposited, int amountSpent) {
+        int change = amountDeposited - amountSpent;
+        return change;
+    }
+
+
 
 
 }

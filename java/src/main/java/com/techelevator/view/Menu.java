@@ -7,15 +7,21 @@ import java.util.Scanner;
 
 public class Menu {
 
-	private PrintWriter out;
-	private Scanner in;
+	private PrintWriter out;//Writes to file
+	private Scanner in;//Scans input
 
-	public Menu(InputStream input, OutputStream output) {
+	//Get method we added********************
+	public Scanner getIn() {
+		return this.in;
+	}
+	//***************************************
+
+	public Menu(InputStream input, OutputStream output) {//Cont sets input/output
 		this.out = new PrintWriter(output);
 		this.in = new Scanner(input);
 	}
 
-	public Object getChoiceFromOptions(Object[] options) {
+	public Object getChoiceFromOptions(Object[] options) {//Sets option to null automatically
 		Object choice = null;
 		while (choice == null) {
 			displayMenuOptions(options);
