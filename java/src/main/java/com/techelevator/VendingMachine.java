@@ -56,9 +56,6 @@ public class VendingMachine {
              }
         }
 
-    public void purchase(){
-
-        } //purchase item
 
     public void feedMoney(){
 
@@ -67,6 +64,8 @@ public class VendingMachine {
     public void selectProduct(){
 
         }
+
+        
 
     public void finishTransaction(){
 
