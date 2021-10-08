@@ -16,7 +16,6 @@ public class Logger {
         this.logFile = logFile;
     }
 
-
     public Logger(String pathToLogFile) throws IOException {
         this.pathToLogFile = pathToLogFile;
         this.logFile = new File(pathToLogFile);
@@ -31,7 +30,6 @@ public class Logger {
        } catch (IOException io){
            System.out.println(io);
        }
-
 
     }
 
@@ -55,15 +53,11 @@ public class Logger {
         String logEntry = logDateAndTime + " " + transactionDetail + " $" + df.format(money1InDollars) + " $" + df.format(money2InDollars);
         //String logEntry = logDateAndTime + transactionDetail + " $"+ money1InDollars + " $" + money2InDollars;
 
-        System.out.println(logEntry);
-
         try(PrintWriter writeToLogFile = new PrintWriter(new FileOutputStream(logFile,true))) {
             writeToLogFile.println(logEntry);
         } catch (IOException ioEx) {
             System.out.println("Something went wrong");
         }
-
-
 
     }
     public void logSeparator() {

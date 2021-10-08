@@ -8,7 +8,6 @@ import java.util.Scanner;
 
 public class VendingMachineCLI {
 
-
 	//Main options
 	private static final String MAIN_MENU_OPTION_DISPLAY_ITEMS = "Display Vending Machine Items";
 	private static final String MAIN_MENU_OPTION_PURCHASE = "Purchase";
@@ -46,7 +45,6 @@ public class VendingMachineCLI {
 	private static final String SELECT_PRODUCT_MENU_OPTION_15 = "D3";
 	private static final String SELECT_PRODUCT_MENU_OPTION_16 = "D4";
 	private static final String SELECT_PRODUCT_MENU_OPTION_RETURN_PURCHASE_MENU = "Back to Purchase Menu";
-
 	//Menu collections
 	//Main menu options
 	private static final String[] MAIN_MENU_OPTIONS = { MAIN_MENU_OPTION_DISPLAY_ITEMS, MAIN_MENU_OPTION_PURCHASE, MAIN_MENU_OPTION_EXIT };
@@ -87,6 +85,9 @@ public class VendingMachineCLI {
 
 					activeMenu = FEED_MENU_OPTIONS;
 		//Feed Money Options
+					System.out.println();
+					vendMachine.displayAmountInMachine();
+
 			} else if(userChoice.equals(FEED_MONEY_MENU_OPTION_ONE)) {
 				vendMachine.feedMoney(100);
 				activeMenu = PURCHASE_MENU_OPTIONS;
@@ -114,6 +115,8 @@ public class VendingMachineCLI {
 
 		//Select Product Options _> I.e "A1" - "D4"
 				vendMachine.displayItems();
+				System.out.println();
+				vendMachine.displayAmountInMachine();
 
 			} else if(userChoice.equals(SELECT_PRODUCT_MENU_OPTION_1)){
 
@@ -192,8 +195,6 @@ public class VendingMachineCLI {
 
 				activeMenu = MAIN_MENU_OPTIONS;
 
-
-
 // MAIN MENU Exit Option
 			} else if (userChoice.equals(MAIN_MENU_OPTION_EXIT)) {
 				//Exit application
@@ -203,8 +204,6 @@ public class VendingMachineCLI {
 
 			}
 		}
-
-
 
 	public static void main(String[] args) {
 		Menu menu = new Menu(System.in, System.out);

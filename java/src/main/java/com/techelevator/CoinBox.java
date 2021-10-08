@@ -4,7 +4,7 @@ public class CoinBox {
 
     private int moneyDeposited= 0;
     private int moneyBank = 0; // how much money is int the coin box
-    //private int cost = 0;
+
 
     public CoinBox(){
         this.moneyBank =0;
@@ -14,7 +14,7 @@ public class CoinBox {
     public CoinBox(int moneyDeposited, int moneyBank, int cost) {
         this.moneyDeposited = moneyDeposited;
         this.moneyBank = moneyBank;
-        //this.cost = cost;
+
     }
 
     public void feed(int amount) {
@@ -40,19 +40,11 @@ public class CoinBox {
         return moneyBank;
     }
 
-//    private int numCurrency(int remainder, int currencyValueInCents){
-//
-//        int numberOfCurrency = ((remainder - (remainder%currencyValueInCents)))/currencyValueInCents; //1466 - (1466%25)"16" = 1450
-//        remainder = remainder%currencyValueInCents;
-//
-//        return numberOfCurrency;
-//    }
-
     public String dispenseChange() {
 
         Integer amount = this.moneyDeposited;
 
-
+        moneyBank += amount;
 
         int dollars = ((amount - (amount%100)))/100; //amount in 2367 - 2300 (23 dollars out)
         amount = amount%100;

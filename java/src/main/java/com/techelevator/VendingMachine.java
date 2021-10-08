@@ -52,6 +52,7 @@ public class VendingMachine{
     }
 
     public void displayItems(){
+
             for(SortedMap.Entry<String,Stack<Product>> entry : inventory.entrySet()){
 
                 if(!entry.getValue().isEmpty()) {
@@ -63,23 +64,24 @@ public class VendingMachine{
                     int stackDisplaySize = entry.getValue().size(); //**** MAKES it so display shows 5
                     String itemName = entry.getValue().peek().getName();
 
-                    System.out.println(entry.getKey() + " | " + itemName + " | $" + df.format(price) + " | " + stackDisplaySize);
+                    System.out.printf("%s| %-18s | $ %s | %s %n", entry.getKey(),itemName,df.format(price),stackDisplaySize);
                     //Use String format to look pretty
+
                 }else{
 
-                    System.out.println(entry.getKey() + " | item is out of stock. ");
+                    System.out.println(entry.getKey() + "| is out of stock.   |        | 0");
 
                 }
 
              }
         }
 
-
     public void feedMoney(int feedDollarsInPennies){ //adds fed amount to vm's coin moneyDeposited
+
             vmCoinBox.feed(feedDollarsInPennies);
             vmLogger.logTransaction("FEED MONEY:", feedDollarsInPennies, vmCoinBox.getMoneyDeposited());
 
-        }
+    }
 
     public void selectProduct(String slotIdentifier) {
 
@@ -92,18 +94,19 @@ public class VendingMachine{
 
                 vmCoinBox.spend(inventory.get(slotIdentifier).peek().getPrice()); //=money deposited - price of product
 
+                this.dispenseDialog(inventory.get(slotIdentifier).peek().getName(),inventory.get(slotIdentifier).peek().getPrice(),inventory.get(slotIdentifier).peek().getProductType());
+
                 inventory.get(slotIdentifier).pop();  //if enough money, dispensed
 
                 vmLogger.logTransaction(nameOfProduct, moneyBefore, vmCoinBox.getMoneyDeposited());
 
             } else {
-                System.out.println("Not enough money");
+                System.out.println("Not enough money.");
             }
         } else {
-            System.out.println("Product sold out or does not exist");
+            System.out.println("SOLD OUT");
         }
     }
-
 
     public void finishTransaction(){
 
@@ -112,7 +115,6 @@ public class VendingMachine{
         vmCoinBox.dispenseChange();//get money in coinbox and dispense it
 
         vmLogger.logTransaction("GIVE CHANGE:", moneyBefore, vmCoinBox.getMoneyDeposited());
-
 
         }
 
@@ -124,6 +126,39 @@ public class VendingMachine{
         System.out.println("Thank you for using Vendomatic4000, have a nice day.");
     }
 
+    public void dispenseDialog(String itemName, int itemPrice, String productType){
+
+        Double price = Double.valueOf(itemPrice)/100.00;
+
+        DecimalFormat df = new DecimalFormat("0.00");
+
+        //item name, cost, number of item remaining
+        System.out.println("Dispensing " + itemName + ", it cost $" + df.format(price) + ".");
+        this.displayAmountInMachine();
+
+        if(productType.equals("Chip")){
+            System.out.println("Crunch Crunch, Yum!");
+        } else if(productType.equals("Candy")){
+            System.out.println("Munch Munch, Yum!");
+        } else if(productType.equals("Drink")){
+            System.out.println("Glug Glug, Yum!");
+        } else if(productType.equals("Gum")){
+            System.out.println("Chew Chew, Yum!");
+        }else{
+            System.out.println("Yum!");
+        }
+
     }
+
+    public void displayAmountInMachine(){
+
+        Double moneyInDollars = Double.valueOf(vmCoinBox.getMoneyDeposited())/ 100;
+
+        DecimalFormat df = new DecimalFormat("0.00");
+
+        System.out.println("Current Balance: $" + df.format(moneyInDollars));
+    }
+
+}
 
 
