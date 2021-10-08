@@ -40,7 +40,7 @@ public class Logger {
     public void logTransaction(String transactionDetail, Integer money1, Integer money2){
         //01/01/2016 12:00:15 PM FEED MONEY: $5.00 $10.00
 
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("/MM/dd/yyyy HH:mm:ss");
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss");
 
         LocalDateTime logNow = LocalDateTime.now();
 
@@ -54,7 +54,7 @@ public class Logger {
 
         Double money2InDollars = Double.valueOf(money2)/100;
 
-        String logEntry = logDateAndTime + transactionDetail + " $"+ df.format(money1InDollars) + " $" + df.format(money2InDollars);
+        String logEntry = logDateAndTime + " " + transactionDetail + " $"+ df.format(money1InDollars) + " $" + df.format(money2InDollars);
         //String logEntry = logDateAndTime + transactionDetail + " $"+ money1InDollars + " $" + money2InDollars;
 
         System.out.println(logEntry);

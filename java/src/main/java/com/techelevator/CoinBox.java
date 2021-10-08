@@ -40,13 +40,42 @@ public class CoinBox {
         return moneyBank;
     }
 
+//    private int numCurrency(int remainder, int currencyValueInCents){
+//
+//        int numberOfCurrency = ((remainder - (remainder%currencyValueInCents)))/currencyValueInCents; //1466 - (1466%25)"16" = 1450
+//        remainder = remainder%currencyValueInCents;
+//
+//        return numberOfCurrency;
+//    }
+
     public String dispenseChange() {
 
         Integer amount = this.moneyDeposited;
 
 
 
-        return "";
+        int dollars = ((amount - (amount%100)))/100; //amount in 2367 - 2300 (23 dollars out)
+        amount = amount%100;
+
+        int numQuarters = ((amount - (amount%25)))/25;
+        amount = amount%25;
+
+        int numDimes = ((amount - (amount%10)))/10;
+        amount = amount%10;
+
+        int numNickles = ((amount - (amount%5)))/5; //1466 - (1466%25)"16" = 1450
+        amount = amount%5;
+
+        int numPennies = amount;
+
+        this.moneyDeposited = 0;
+
+        String changeStatement = "Your change is $" +dollars + " Dollars, " + numQuarters + " Quarters, " + numDimes + " Dimes, " + numNickles + " Nickles, " + numPennies+ " Pennies";
+        System.out.println(changeStatement);
+
+
+        return changeStatement;
+
     }
 
 }

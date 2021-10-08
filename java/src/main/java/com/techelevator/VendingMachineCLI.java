@@ -113,56 +113,73 @@ public class VendingMachineCLI {
 				activeMenu = SELECT_PRODUCT_OPTIONS;
 
 		//Select Product Options _> I.e "A1" - "D4"
+				vendMachine.displayItems();
 
 			} else if(userChoice.equals(SELECT_PRODUCT_MENU_OPTION_1)){
+
 				vendMachine.selectProduct("A1");
 				activeMenu = PURCHASE_MENU_OPTIONS;
 
 			} else if(userChoice.equals(SELECT_PRODUCT_MENU_OPTION_2)){
 				vendMachine.selectProduct("A2");
 				activeMenu = PURCHASE_MENU_OPTIONS;
+
 			} else if(userChoice.equals(SELECT_PRODUCT_MENU_OPTION_3)){
 				vendMachine.selectProduct("A3");
 				activeMenu = PURCHASE_MENU_OPTIONS;
+
 			} else if(userChoice.equals(SELECT_PRODUCT_MENU_OPTION_4)){
 				vendMachine.selectProduct("A4");
 				activeMenu = PURCHASE_MENU_OPTIONS;
+
 			} else if(userChoice.equals(SELECT_PRODUCT_MENU_OPTION_5)){
 				vendMachine.selectProduct("B1");
 				activeMenu = PURCHASE_MENU_OPTIONS;
+
 			} else if(userChoice.equals(SELECT_PRODUCT_MENU_OPTION_6)){
 				vendMachine.selectProduct("B2");
 				activeMenu = PURCHASE_MENU_OPTIONS;
+
 			} else if(userChoice.equals(SELECT_PRODUCT_MENU_OPTION_7)){
 				vendMachine.selectProduct("B3");
 				activeMenu = PURCHASE_MENU_OPTIONS;
+
 			} else if(userChoice.equals(SELECT_PRODUCT_MENU_OPTION_8)){
 				vendMachine.selectProduct("B4");
 				activeMenu = PURCHASE_MENU_OPTIONS;
+
 			} else if(userChoice.equals(SELECT_PRODUCT_MENU_OPTION_9)){
 				vendMachine.selectProduct("C1");
 				activeMenu = PURCHASE_MENU_OPTIONS;
+
 			} else if(userChoice.equals(SELECT_PRODUCT_MENU_OPTION_10)){
 				vendMachine.selectProduct("C2");
 				activeMenu = PURCHASE_MENU_OPTIONS;
+
 			} else if(userChoice.equals(SELECT_PRODUCT_MENU_OPTION_11)){
 				vendMachine.selectProduct("C3");
 				activeMenu = PURCHASE_MENU_OPTIONS;
+
 			} else if(userChoice.equals(SELECT_PRODUCT_MENU_OPTION_12)){
 				vendMachine.selectProduct("C4");
 				activeMenu = PURCHASE_MENU_OPTIONS;
+
 			} else if(userChoice.equals(SELECT_PRODUCT_MENU_OPTION_13)){
 				vendMachine.selectProduct("D1");
 				activeMenu = PURCHASE_MENU_OPTIONS;
+
 			} else if(userChoice.equals(SELECT_PRODUCT_MENU_OPTION_14)){
 				vendMachine.selectProduct("D2");
 				activeMenu = PURCHASE_MENU_OPTIONS;
+
 			} else if(userChoice.equals(SELECT_PRODUCT_MENU_OPTION_15)){
 				vendMachine.selectProduct("D3");
 				activeMenu = PURCHASE_MENU_OPTIONS;
+
 			} else if(userChoice.equals(SELECT_PRODUCT_MENU_OPTION_16)){
 				vendMachine.selectProduct("D4");
 				activeMenu = PURCHASE_MENU_OPTIONS;
+
 			} else if(userChoice.equals(SELECT_PRODUCT_MENU_OPTION_RETURN_PURCHASE_MENU)){
 
 				activeMenu = PURCHASE_MENU_OPTIONS;
@@ -170,6 +187,8 @@ public class VendingMachineCLI {
 // Purchase Menu Finish Transaction -> Makes change, send change back, send user back to main menu
 
 			} else if (userChoice.equals(PURCHASE_MENU_OPTION_FINISH_TRANSACTION)) {
+
+				vendMachine.finishTransaction();
 
 				activeMenu = MAIN_MENU_OPTIONS;
 

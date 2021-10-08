@@ -60,11 +60,14 @@ public class VendingMachine{
 
                     DecimalFormat df = new DecimalFormat("0.00");
 
-                    System.out.println(entry.getKey() + " | " + entry.getValue().peek().getName() + " | $" + df.format(price) + " | " + entry.getValue().size());
+                    int stackDisplaySize = entry.getValue().size(); //**** MAKES it so display shows 5
+                    String itemName = entry.getValue().peek().getName();
+
+                    System.out.println(entry.getKey() + " | " + itemName + " | $" + df.format(price) + " | " + stackDisplaySize);
                     //Use String format to look pretty
                 }else{
 
-                    System.out.println(entry.getKey() + "  is empty. ");
+                    System.out.println(entry.getKey() + " | item is out of stock. ");
 
                 }
 
@@ -74,22 +77,22 @@ public class VendingMachine{
 
     public void feedMoney(int feedDollarsInPennies){ //adds fed amount to vm's coin moneyDeposited
             vmCoinBox.feed(feedDollarsInPennies);
-            vmLogger.logTransaction(" FEED MONEY:", feedDollarsInPennies, vmCoinBox.getMoneyDeposited());
+            vmLogger.logTransaction("FEED MONEY:", feedDollarsInPennies, vmCoinBox.getMoneyDeposited());
 
         }
 
     public void selectProduct(String slotIdentifier) {
-        this.displayItems();
 
         if (!inventory.get(slotIdentifier).empty()) {  //If not empty then dispense item
             if (inventory.get(slotIdentifier).peek().getPrice() <= vmCoinBox.getMoneyDeposited()) {
-                inventory.get(slotIdentifier).pop();  //if enough money, dispensed
 
-                int moneyBefore = vmCoinBox.getMoneyDeposited(); //gets money before subreacted by cost of product
+                String nameOfProduct = inventory.get(slotIdentifier).peek().getName();//gets name of product
 
                 vmCoinBox.spend(inventory.get(slotIdentifier).peek().getPrice()); //=money deposited - price of product
 
-                String nameOfProduct = inventory.get(slotIdentifier).peek().getName();//gets name of product
+                inventory.get(slotIdentifier).pop();  //if enough money, dispensed
+
+                int moneyBefore = vmCoinBox.getMoneyDeposited(); // money before subtracted by cost of product
 
                 vmLogger.logTransaction(nameOfProduct, moneyBefore, vmCoinBox.getMoneyDeposited());
 
@@ -103,10 +106,20 @@ public class VendingMachine{
 
 
     public void finishTransaction(){
-            vmCoinBox.dispenseChange();//get money in coinbox and dispense it
+
+        int moneyBefore = vmCoinBox.getMoneyDeposited();
+
+        vmCoinBox.dispenseChange();//get money in coinbox and dispense it
+
+        vmLogger.logTransaction("GIVE CHANGE", moneyBefore, vmCoinBox.getMoneyDeposited());
+
+
         }
 
     public void exitDialogue() {
+
+        vmLogger.logTransaction("TRANSACTION ENDED", 0,0);
+
         System.out.println("Thank you for using Vendomatic4000, have a nice day.");
     }
 
