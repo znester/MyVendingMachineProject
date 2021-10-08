@@ -78,12 +78,32 @@ public class VendingMachine{
 
         }
 
-    public void selectProduct(){
-            this.displayItems();
+    public void selectProduct(String slotIdentifier) {
+        this.displayItems();
+
+        if (!inventory.get(slotIdentifier).empty()) {  //If not empty then dispense item
+            if (inventory.get(slotIdentifier).peek().getPrice() <= vmCoinBox.getMoneyDeposited()) {
+                inventory.get(slotIdentifier).pop();  //if enough money, dispensed
+
+                int moneyBefore = vmCoinBox.getMoneyDeposited(); //gets money before subreacted by cost of product
+
+                vmCoinBox.spend(inventory.get(slotIdentifier).peek().getPrice()); //=money deposited - price of product
+
+                String nameOfProduct = inventory.get(slotIdentifier).peek().getName();//gets name of product
+
+                vmLogger.logTransaction(nameOfProduct, moneyBefore, vmCoinBox.getMoneyDeposited());
+
+            } else {
+                System.out.println("Not enough money");
+            }
+        } else {
+            System.out.println("Product sold out or does not exist");
         }
+    }
+
 
     public void finishTransaction(){
-
+            vmCoinBox.dispenseChange();//get money in coinbox and dispense it
         }
 
     public void exitDialogue() {

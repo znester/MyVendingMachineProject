@@ -50,11 +50,12 @@ public class Logger {
 
         DecimalFormat df = new DecimalFormat("0.00");
 
-        Double money1InDollars = Double.valueOf(money1/100);
+        Double money1InDollars = Double.valueOf(money1)/100;
 
-        Double money2InDollars = Double.valueOf(money2/100);
+        Double money2InDollars = Double.valueOf(money2)/100;
 
         String logEntry = logDateAndTime + transactionDetail + " $"+ df.format(money1InDollars) + " $" + df.format(money2InDollars);
+        //String logEntry = logDateAndTime + transactionDetail + " $"+ money1InDollars + " $" + money2InDollars;
 
         System.out.println(logEntry);
 
