@@ -15,16 +15,53 @@ public class VendingMachineCLI {
 	private static final String MAIN_MENU_OPTION_EXIT = "Exit";
 
 	//Purchase Options
-	private static final String PURCHASE_MENU_OPTION_DEPOSIT_MONEY = "Feed Money";
-	private static final String PURCHASE_MENU_OPTION_END_TRANSACTION = "End Transaction";
-	private static final String PURCHASE_MENU_OPTION_RETURN_TO_MAIN_MENU = "Main Menu";
+	private static final String PURCHASE_MENU_OPTION_FEED_MONEY = "Feed Money";
+	private static final String PURCHASE_MENU_OPTION_SELECT_PRODUCT = "Select Product";
+	private static final String PURCHASE_MENU_OPTION_FINISH_TRANSACTION = "Finish Transaction";
+	//private static final String PURCHASE_MENU_OPTION_RETURN_TO_MAIN_MENU = "Main Menu";***
 
 	//Feed money options
+	private static final String FEED_MONEY_MENU_OPTION_ONE = "$1";
+	private static final String FEED_MONEY_MENU_OPTION_TWO = "$2";
+	private static final String FEED_MONEY_MENU_OPTION_FIVE = "$5";
+	private static final String FEED_MONEY_MENU_OPTION_TEN = "$10";
+	//private static final String FEED_MONEY_MENU_GO_TO_SELECT_PRODUCT_MENU = "Go To Select Product Menu";***
+	private static final String FEED_MONEY_MENU_OPTION_TO_RETURN_TO_PURCHASE_MENU = "Back To Purchase Menu";
+
+	//Select product options
+	private static final String SELECT_PRODUCT_MENU_OPTION_1 = "A1";
+	private static final String SELECT_PRODUCT_MENU_OPTION_2 = "A2";
+	private static final String SELECT_PRODUCT_MENU_OPTION_3 = "A3";
+	private static final String SELECT_PRODUCT_MENU_OPTION_4 = "A4";
+	private static final String SELECT_PRODUCT_MENU_OPTION_5 = "B1";
+	private static final String SELECT_PRODUCT_MENU_OPTION_6 = "B2";
+	private static final String SELECT_PRODUCT_MENU_OPTION_7 = "B3";
+	private static final String SELECT_PRODUCT_MENU_OPTION_8 = "B4";
+	private static final String SELECT_PRODUCT_MENU_OPTION_9 = "C1";
+	private static final String SELECT_PRODUCT_MENU_OPTION_10 = "C2";
+	private static final String SELECT_PRODUCT_MENU_OPTION_11 = "C3";
+	private static final String SELECT_PRODUCT_MENU_OPTION_12 = "C4";
+	private static final String SELECT_PRODUCT_MENU_OPTION_13 = "D1";
+	private static final String SELECT_PRODUCT_MENU_OPTION_14 = "D2";
+	private static final String SELECT_PRODUCT_MENU_OPTION_15 = "D3";
+	private static final String SELECT_PRODUCT_MENU_OPTION_16 = "D4";
+	private static final String SELECT_PRODUCT_MENU_OPTION_RETURN_PURCHASE_MENU = "Back to Purchase Menu";
 
 
 	//Menu collections
+	//Main menu options
 	private static final String[] MAIN_MENU_OPTIONS = { MAIN_MENU_OPTION_DISPLAY_ITEMS, MAIN_MENU_OPTION_PURCHASE, MAIN_MENU_OPTION_EXIT };
-	private static final String[] PURCHASE_MENU_OPTIONS = { PURCHASE_MENU_OPTION_DEPOSIT_MONEY, PURCHASE_MENU_OPTION_END_TRANSACTION, PURCHASE_MENU_OPTION_RETURN_TO_MAIN_MENU };
+	//Purchase menu options
+	private static final String[] PURCHASE_MENU_OPTIONS = { PURCHASE_MENU_OPTION_FEED_MONEY,
+			PURCHASE_MENU_OPTION_SELECT_PRODUCT, PURCHASE_MENU_OPTION_FINISH_TRANSACTION }; //,PURCHASE_MENU_OPTION_RETURN_TO_MAIN_MENU };
+	//Feed money menu options
+	private static final String[] FEED_MENU_OPTIONS = { FEED_MONEY_MENU_OPTION_ONE, FEED_MONEY_MENU_OPTION_TWO, FEED_MONEY_MENU_OPTION_FIVE,
+			FEED_MONEY_MENU_OPTION_TEN, FEED_MONEY_MENU_OPTION_TO_RETURN_TO_PURCHASE_MENU };
+	//Select product menu options
+	private static final String[] SELECT_PRODUCT_OPTIONS = { SELECT_PRODUCT_MENU_OPTION_1, SELECT_PRODUCT_MENU_OPTION_2, SELECT_PRODUCT_MENU_OPTION_3,
+			SELECT_PRODUCT_MENU_OPTION_4, SELECT_PRODUCT_MENU_OPTION_5, SELECT_PRODUCT_MENU_OPTION_6, SELECT_PRODUCT_MENU_OPTION_7, SELECT_PRODUCT_MENU_OPTION_8, SELECT_PRODUCT_MENU_OPTION_9,
+			SELECT_PRODUCT_MENU_OPTION_10, SELECT_PRODUCT_MENU_OPTION_11, SELECT_PRODUCT_MENU_OPTION_12, SELECT_PRODUCT_MENU_OPTION_13, SELECT_PRODUCT_MENU_OPTION_14,
+			SELECT_PRODUCT_MENU_OPTION_15, SELECT_PRODUCT_MENU_OPTION_16, SELECT_PRODUCT_MENU_OPTION_RETURN_PURCHASE_MENU };
 
 	private Menu menu;
 
@@ -47,7 +84,7 @@ public class VendingMachineCLI {
 				// Make active menu purchase menu
 				activeMenu = PURCHASE_MENU_OPTIONS;
 
-				if(userChoice.equals(PURCHASE_MENU_OPTION_DEPOSIT_MONEY)) {
+				if(userChoice.equals(PURCHASE_MENU_OPTION_FEED_MONEY)) {
 					//try(Scanner scanner = new Scanner(menu.in)) {
 					System.out.print("Deposit how much? ");
 
@@ -62,12 +99,12 @@ public class VendingMachineCLI {
 				//Exit application
 				vendMachine.exitDialogue();
 				System.exit(1);
-
-			} else if (userChoice.equals(PURCHASE_MENU_OPTION_RETURN_TO_MAIN_MENU)) {
-				//Make active menu main menu
-				activeMenu = MAIN_MENU_OPTIONS;
-
 			}
+//			 else if (userChoice.equals(PURCHASE_MENU_OPTION_RETURN_TO_MAIN_MENU)) {
+//				//Make active menu main menu
+//				activeMenu = MAIN_MENU_OPTIONS;
+//
+//			}
 			}
 		}
 		//public int
