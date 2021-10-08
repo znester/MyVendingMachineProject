@@ -10,6 +10,11 @@ public class CoinBox {
         this.moneyDeposited =0;
     }
 
+    public CoinBox(int moneyDeposited, int moneyBank) {
+        this.moneyDeposited = moneyDeposited;
+        this.moneyBank = moneyBank;
+    }
+
     public void feed(int amount) {
         this.moneyDeposited += amount;
     }
@@ -23,7 +28,11 @@ public class CoinBox {
         return change;
     }
 
+    public int getMoneyDeposited() {
+        return moneyDeposited;
+    }
 
-
-
+    public int getMoneyBank() {
+        return moneyBank;
+    }
 }

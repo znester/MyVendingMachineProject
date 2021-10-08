@@ -4,6 +4,7 @@ package com.techelevator;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.*;
 
@@ -12,8 +13,9 @@ public class VendingMachine{
 
     private SortedMap<String, Stack<Product>> inventory = new TreeMap<String, Stack<Product>>(); //String = slot identifier , Stack<product> = inventory place content
     private CoinBox vmCoinBox = new CoinBox();
+    private Logger vmLogger;
 
-
+    // Vending machine constructor, builds inventory
     public VendingMachine(String pathToInventoryFile) {
 
         File inputFile = new File(pathToInventoryFile);
@@ -39,6 +41,16 @@ public class VendingMachine{
         }
 
     }
+
+//Initializes this vending machine's Logger
+    {
+        try {
+            vmLogger = new Logger("log.txt");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void displayItems(){
             for(SortedMap.Entry<String,Stack<Product>> entry : inventory.entrySet()){
 
@@ -60,15 +72,15 @@ public class VendingMachine{
         }
 
 
-    public void feedMoney(int feedDollars){
-            vmCoinBox.feed(feedDollars);
+    public void feedMoney(int feedDollarsInPennies){ //adds fed amount to vm's coin moneyDeposited
+            vmCoinBox.feed(feedDollarsInPennies);
+            vmLogger.logTransaction(" FEED MONEY:", feedDollarsInPennies, vmCoinBox.getMoneyDeposited());
+
         }
 
     public void selectProduct(){
             this.displayItems();
         }
-
-        
 
     public void finishTransaction(){
 

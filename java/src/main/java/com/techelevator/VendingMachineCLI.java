@@ -47,7 +47,6 @@ public class VendingMachineCLI {
 	private static final String SELECT_PRODUCT_MENU_OPTION_16 = "D4";
 	private static final String SELECT_PRODUCT_MENU_OPTION_RETURN_PURCHASE_MENU = "Back to Purchase Menu";
 
-
 	//Menu collections
 	//Main menu options
 	private static final String[] MAIN_MENU_OPTIONS = { MAIN_MENU_OPTION_DISPLAY_ITEMS, MAIN_MENU_OPTION_PURCHASE, MAIN_MENU_OPTION_EXIT };
@@ -83,31 +82,92 @@ public class VendingMachineCLI {
 			} else if (userChoice.equals(MAIN_MENU_OPTION_PURCHASE)) {
 				// Make active menu purchase menu
 				activeMenu = PURCHASE_MENU_OPTIONS;
+// Feed Money
+			} else if(userChoice.equals(PURCHASE_MENU_OPTION_FEED_MONEY)) {
 
-				if(userChoice.equals(PURCHASE_MENU_OPTION_FEED_MONEY)) {
-					//try(Scanner scanner = new Scanner(menu.in)) {
-					System.out.print("Deposit how much? ");
+					activeMenu = FEED_MENU_OPTIONS;
+		//Feed Money Options
+			} else if(userChoice.equals(FEED_MONEY_MENU_OPTION_ONE)) {
+				vendMachine.feedMoney(100);
+				activeMenu = PURCHASE_MENU_OPTIONS;
 
-//
+			} else if(userChoice.equals(FEED_MONEY_MENU_OPTION_TWO)) {
+				vendMachine.feedMoney(200);
+				activeMenu = PURCHASE_MENU_OPTIONS;
 
-				}
+			} else if(userChoice.equals(FEED_MONEY_MENU_OPTION_FIVE)) {
+				vendMachine.feedMoney(500);
+				activeMenu = PURCHASE_MENU_OPTIONS;
+
+			} else if(userChoice.equals(FEED_MONEY_MENU_OPTION_TEN)) {
+				vendMachine.feedMoney(1000);
+				activeMenu = PURCHASE_MENU_OPTIONS;
+
+			} else if(userChoice.equals(FEED_MONEY_MENU_OPTION_TO_RETURN_TO_PURCHASE_MENU)) {
+
+				activeMenu = PURCHASE_MENU_OPTIONS;
+
+//Select Product
+			} else if(userChoice.equals(PURCHASE_MENU_OPTION_SELECT_PRODUCT)) {
+
+				activeMenu = SELECT_PRODUCT_OPTIONS;
+
+		//Select Product Options _> I.e "A1" - "D4"
+
+			} else if(userChoice.equals(SELECT_PRODUCT_MENU_OPTION_1)){
+
+			} else if(userChoice.equals(SELECT_PRODUCT_MENU_OPTION_2)){
+
+			} else if(userChoice.equals(SELECT_PRODUCT_MENU_OPTION_3)){
+
+			} else if(userChoice.equals(SELECT_PRODUCT_MENU_OPTION_4)){
+
+			} else if(userChoice.equals(SELECT_PRODUCT_MENU_OPTION_5)){
+
+			} else if(userChoice.equals(SELECT_PRODUCT_MENU_OPTION_6)){
+
+			} else if(userChoice.equals(SELECT_PRODUCT_MENU_OPTION_7)){
+
+			} else if(userChoice.equals(SELECT_PRODUCT_MENU_OPTION_8)){
+
+			} else if(userChoice.equals(SELECT_PRODUCT_MENU_OPTION_9)){
+
+			} else if(userChoice.equals(SELECT_PRODUCT_MENU_OPTION_10)){
+
+			} else if(userChoice.equals(SELECT_PRODUCT_MENU_OPTION_11)){
+
+			} else if(userChoice.equals(SELECT_PRODUCT_MENU_OPTION_12)){
+
+			} else if(userChoice.equals(SELECT_PRODUCT_MENU_OPTION_13)){
+
+			} else if(userChoice.equals(SELECT_PRODUCT_MENU_OPTION_14)){
+
+			} else if(userChoice.equals(SELECT_PRODUCT_MENU_OPTION_15)){
+
+			} else if(userChoice.equals(SELECT_PRODUCT_MENU_OPTION_16)){
+
+			} else if(userChoice.equals(SELECT_PRODUCT_MENU_OPTION_RETURN_PURCHASE_MENU)){
+
+				activeMenu = PURCHASE_MENU_OPTIONS;
+
+// Purchase Menu Finish Transaction -> Makes change, send change back, send user back to main menu
+
+			} else if (userChoice.equals(PURCHASE_MENU_OPTION_FINISH_TRANSACTION)) {
+
+				activeMenu = MAIN_MENU_OPTIONS;
 
 
 
-
+// MAIN MENU Exit Option
 			} else if (userChoice.equals(MAIN_MENU_OPTION_EXIT)) {
 				//Exit application
 				vendMachine.exitDialogue();
 				System.exit(1);
 			}
-//			 else if (userChoice.equals(PURCHASE_MENU_OPTION_RETURN_TO_MAIN_MENU)) {
-//				//Make active menu main menu
-//				activeMenu = MAIN_MENU_OPTIONS;
-//
-//			}
+
 			}
 		}
-		//public int
+
 
 
 	public static void main(String[] args) {
