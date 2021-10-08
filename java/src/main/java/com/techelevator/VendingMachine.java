@@ -88,11 +88,11 @@ public class VendingMachine{
 
                 String nameOfProduct = inventory.get(slotIdentifier).peek().getName();//gets name of product
 
+                int moneyBefore = vmCoinBox.getMoneyDeposited(); // money before subtracted by cost of product
+
                 vmCoinBox.spend(inventory.get(slotIdentifier).peek().getPrice()); //=money deposited - price of product
 
                 inventory.get(slotIdentifier).pop();  //if enough money, dispensed
-
-                int moneyBefore = vmCoinBox.getMoneyDeposited(); // money before subtracted by cost of product
 
                 vmLogger.logTransaction(nameOfProduct, moneyBefore, vmCoinBox.getMoneyDeposited());
 
@@ -111,14 +111,15 @@ public class VendingMachine{
 
         vmCoinBox.dispenseChange();//get money in coinbox and dispense it
 
-        vmLogger.logTransaction("GIVE CHANGE", moneyBefore, vmCoinBox.getMoneyDeposited());
+        vmLogger.logTransaction("GIVE CHANGE:", moneyBefore, vmCoinBox.getMoneyDeposited());
 
 
         }
 
     public void exitDialogue() {
 
-        vmLogger.logTransaction("TRANSACTION ENDED", 0,0);
+        vmLogger.logTransaction("TRANSACTION ENDED:", 0,0);
+        vmLogger.logSeparator();//Puts space in between log entries
 
         System.out.println("Thank you for using Vendomatic4000, have a nice day.");
     }
