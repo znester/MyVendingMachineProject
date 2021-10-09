@@ -9,59 +9,59 @@ import java.util.List;
 
 public class Logger {
 
-    private String pathToLogFile;
-    private File logFile;
+    //Instance variables
+    private final String PATH_TO_LOG_FILE;
+    private final File LOG_FILE;
+    //Need another file for "Sales Report"
+
+    //Constructor
     public Logger(String pathToLogFile, File logFile) {
-        this.pathToLogFile = pathToLogFile;
-        this.logFile = logFile;
+        this.PATH_TO_LOG_FILE = pathToLogFile;
+        this.LOG_FILE = logFile;
     }
+    //Overload constructor w/logic for create new log.txt file if does not exist
+    public Logger(String pathToLogFile) {
+        this.PATH_TO_LOG_FILE = pathToLogFile;
+        this.LOG_FILE = new File(pathToLogFile);
 
-    public Logger(String pathToLogFile) throws IOException {
-        this.pathToLogFile = pathToLogFile;
-        this.logFile = new File(pathToLogFile);
-
-       try{ if(logFile.createNewFile()){ //creates new log.txt file if it does not already exist, can delete this if statement later
-           System.out.println(this.pathToLogFile + " created");
-           System.out.println(logFile.getAbsolutePath());
+       try{ if(LOG_FILE.createNewFile()){ //creates new log.txt file if it does not already exist, can delete this if statement later
+           System.out.println(this.PATH_TO_LOG_FILE + " created");
+           System.out.println(LOG_FILE.getAbsolutePath());
         } else{
-           System.out.println(this.pathToLogFile + " already exists");
-           System.out.println(logFile.getAbsolutePath());
+           System.out.println(this.PATH_TO_LOG_FILE + " already exists");
+           System.out.println(LOG_FILE.getAbsolutePath());
        }
        } catch (IOException io){
            System.out.println(io);
        }
 
     }
-//Describe what this method does
+    //Method to write transaction logs to the file
     public void logTransaction(String transactionDetail, Integer money1, Integer money2) {
-        //01/01/2016 12:00:15 PM FEED MONEY: $5.00 $10.00
-
+        //Formats date/time
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm:ss a");
-
+        //Creates var of "now's" date/time
         LocalDateTime logNow = LocalDateTime.now();
-
+        //Formats "now's" date/time
         String logDateAndTime = dtf.format(logNow);
-
-        //System.out.println(logDateAndTime);
-
+        //Sets format for $
         DecimalFormat df = new DecimalFormat("0.00");
-
+        //Converts penny math int to doubles
         Double money1InDollars = Double.valueOf(money1) / 100;
-
         Double money2InDollars = Double.valueOf(money2) / 100;
-
+        //Defines format for log entry
         String logEntry = logDateAndTime + " " + transactionDetail + " $" + df.format(money1InDollars) + " $" + df.format(money2InDollars);
-        //String logEntry = logDateAndTime + transactionDetail + " $"+ money1InDollars + " $" + money2InDollars;
 
-        try(PrintWriter writeToLogFile = new PrintWriter(new FileOutputStream(logFile,true))) {
+        //Appends above log entry to file of a new line
+        try(PrintWriter writeToLogFile = new PrintWriter(new FileOutputStream(LOG_FILE,true))) {
             writeToLogFile.println(logEntry);
         } catch (IOException ioEx) {
-            System.out.println("Something went wrong");
+            System.out.println("I/O Exception");
         }
-
     }
+    //Method to separate log entries, "*****" is printed after "End Transaction" is selected
     public void logSeparator() {
-        try(PrintWriter writeToLogFile = new PrintWriter(new FileOutputStream(logFile,true))) {
+        try(PrintWriter writeToLogFile = new PrintWriter(new FileOutputStream(LOG_FILE,true))) {
             writeToLogFile.println("*****");
         } catch (IOException ioEx) {
             System.out.println("Something can go wrong");
