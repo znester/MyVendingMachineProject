@@ -32,7 +32,7 @@ public class Logger {
        }
 
     }
-
+//Describe what this method does
     public void logTransaction(String transactionDetail, Integer money1, Integer money2) {
         //01/01/2016 12:00:15 PM FEED MONEY: $5.00 $10.00
 
