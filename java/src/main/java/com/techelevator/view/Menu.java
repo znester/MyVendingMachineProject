@@ -15,6 +15,8 @@ public class Menu {
 		this.out = new PrintWriter(output);
 		this.in = new Scanner(input);
 	}
+	//default constructor? This fixed new errors???
+	public Menu(){}
 
 	public Object getChoiceFromOptions(Object[] options) {//Sets option to null automatically
 		Object choice = null;

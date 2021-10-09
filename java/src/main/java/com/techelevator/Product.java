@@ -12,7 +12,7 @@ public class Product {
         Double priceDbl = Double.valueOf(price);
         this.price = (int)(priceDbl*100);
     }
-    public Product(){}
+    public Product(){} //for some reason this causes error now???
 
     public String getName() {
         return name;
