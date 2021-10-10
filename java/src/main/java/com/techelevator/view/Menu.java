@@ -15,7 +15,7 @@ public class Menu {
 		this.out = new PrintWriter(output);
 		this.in = new Scanner(input);
 	}
-	//default constructor? This fixed new errors???
+	//Default constructor just in case
 	public Menu(){}
 
 	public Object getChoiceFromOptions(Object[] options) {//Sets option to null automatically
@@ -31,7 +31,7 @@ public class Menu {
 		Object choice = null;
 		String userInput = in.nextLine();
 		try {
-			int selectedOption = Integer.valueOf(userInput);
+			int selectedOption = Integer.parseInt(userInput);
 			if (selectedOption > 0 && selectedOption <= options.length) {
 				choice = options[selectedOption - 1];
 			}

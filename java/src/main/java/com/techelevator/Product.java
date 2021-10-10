@@ -28,7 +28,7 @@ public class Product {
     public Product(String name, String price, String productType){
         this.name = name;
         this.productType = productType;
-        Double priceDbl = Double.valueOf(price);
+        double priceDbl = Double.parseDouble(price);
         this.price = (int)(priceDbl*100);
     }
     //Default constructor

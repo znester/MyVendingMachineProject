@@ -61,7 +61,7 @@ public class CoinBox {
         this.moneyDeposited = 0;
 
         //Formats change statement
-        String changeStatement = "Your change is $" +dollars + " Dollars, " + numQuarters + " Quarters, " + numDimes + " Dimes, " + numNickles + " Nickles, " + numPennies+ " Pennies";
+        String changeStatement = "Your change is $" +dollars + ", " + numQuarters + " Quarter(s), " + numDimes + " Dime(s), " + numNickles + " Nickle(s), " + numPennies+ " Pennie(s)";
         System.out.println(changeStatement);
         return changeStatement;
     }
