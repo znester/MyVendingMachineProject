@@ -14,7 +14,7 @@ public class Logger {
     private final File LOG_FILE;
     //Need another file for "Sales Report"
 
-    //Default constructor
+    //Constructor
     public Logger(String pathToLogFile, File logFile) {
         this.PATH_TO_LOG_FILE = pathToLogFile;
         this.LOG_FILE = logFile;
@@ -26,10 +26,11 @@ public class Logger {
 
        try{ if(LOG_FILE.createNewFile()){ //creates new log.txt file if it does not already exist, can delete this if statement later
            System.out.println(this.PATH_TO_LOG_FILE + " created");
-       } else{
-           System.out.println(this.PATH_TO_LOG_FILE + " already exists");
-       }
            System.out.println(LOG_FILE.getAbsolutePath());
+        } else{
+           System.out.println(this.PATH_TO_LOG_FILE + " already exists");
+           System.out.println(LOG_FILE.getAbsolutePath());
+       }
        } catch (IOException ioEx){
            System.out.println("I/O exception");
        }
