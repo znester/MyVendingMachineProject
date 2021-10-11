@@ -66,7 +66,7 @@ public class VendingMachineCLI {
 		this.MENU = menu;
 	}
 
-	//Method controls flow of menu options w/if/else statements
+	//Method controls flow of menu options with switch statements
 	public void run() {
 		VendingMachine vendMachine = new VendingMachine("vendingmachine.csv"); //create the vending machine
 
@@ -78,60 +78,54 @@ public class VendingMachineCLI {
 				case MAIN_MENU_OPTION_DISPLAY_ITEMS:
 					// display vending machine items
 					vendMachine.displayItems();
-
 					break;
+
 				case MAIN_MENU_OPTION_PURCHASE:
 					// Make active menu purchase menu
 					activeMenu = PURCHASE_MENU_OPTIONS;
-
 					break;
+
 				case PURCHASE_MENU_OPTION_FEED_MONEY:
 					activeMenu = FEED_MENU_OPTIONS;
 					System.out.println();
-					vendMachine.displayAmountInMachine();//Shows current amount in machine
-
-
+					vendMachine.displayAmountInMachine();
 					break;
+
 				case FEED_MONEY_MENU_OPTION_ONE:
 					vendMachine.feedMoney(100);
 					activeMenu = PURCHASE_MENU_OPTIONS;
 					System.out.println();
-					vendMachine.displayAmountInMachine();//Shows current amount in machine
-
-
+					vendMachine.displayAmountInMachine();
 					break;
+
 				case FEED_MONEY_MENU_OPTION_TWO:
 					vendMachine.feedMoney(200);
 					activeMenu = PURCHASE_MENU_OPTIONS;
 					System.out.println();
-					vendMachine.displayAmountInMachine();//Shows current amount in machine
-
-
+					vendMachine.displayAmountInMachine();
 					break;
+
 				case FEED_MONEY_MENU_OPTION_FIVE:
 					vendMachine.feedMoney(500);
 					activeMenu = PURCHASE_MENU_OPTIONS;
 					System.out.println();
-					vendMachine.displayAmountInMachine();//Shows current amount in machine
-
-
+					vendMachine.displayAmountInMachine();
 					break;
+
 				case FEED_MONEY_MENU_OPTION_TEN:
 					vendMachine.feedMoney(1000);
 					activeMenu = PURCHASE_MENU_OPTIONS;
 					System.out.println();
-					vendMachine.displayAmountInMachine();//Shows current amount in machine
-
-
+					vendMachine.displayAmountInMachine();
 					break;
+
 				case FEED_MONEY_MENU_OPTION_TO_RETURN_TO_PURCHASE_MENU:
 				case SELECT_PRODUCT_MENU_OPTION_RETURN_PURCHASE_MENU:
 					activeMenu = PURCHASE_MENU_OPTIONS;
 					System.out.println();
-					vendMachine.displayAmountInMachine();//Shows current amount in machine
-
-
+					vendMachine.displayAmountInMachine();
 					break;
+
 				case PURCHASE_MENU_OPTION_SELECT_PRODUCT:
 					activeMenu = SELECT_PRODUCT_OPTIONS;
 
@@ -139,95 +133,95 @@ public class VendingMachineCLI {
 					vendMachine.displayItems();
 					System.out.println();
 					vendMachine.displayAmountInMachine();
-
 					break;
+
 				case SELECT_PRODUCT_MENU_OPTION_1:
 					vendMachine.selectProduct("A1");
 					activeMenu = PURCHASE_MENU_OPTIONS;
-
 					break;
+
 				case SELECT_PRODUCT_MENU_OPTION_2:
 					vendMachine.selectProduct("A2");
 					activeMenu = PURCHASE_MENU_OPTIONS;
-
 					break;
+
 				case SELECT_PRODUCT_MENU_OPTION_3:
 					vendMachine.selectProduct("A3");
 					activeMenu = PURCHASE_MENU_OPTIONS;
-
 					break;
+
 				case SELECT_PRODUCT_MENU_OPTION_4:
 					vendMachine.selectProduct("A4");
 					activeMenu = PURCHASE_MENU_OPTIONS;
-
 					break;
+
 				case SELECT_PRODUCT_MENU_OPTION_5:
 					vendMachine.selectProduct("B1");
 					activeMenu = PURCHASE_MENU_OPTIONS;
-
 					break;
+
 				case SELECT_PRODUCT_MENU_OPTION_6:
 					vendMachine.selectProduct("B2");
 					activeMenu = PURCHASE_MENU_OPTIONS;
-
 					break;
+
 				case SELECT_PRODUCT_MENU_OPTION_7:
 					vendMachine.selectProduct("B3");
 					activeMenu = PURCHASE_MENU_OPTIONS;
-
 					break;
+
 				case SELECT_PRODUCT_MENU_OPTION_8:
 					vendMachine.selectProduct("B4");
 					activeMenu = PURCHASE_MENU_OPTIONS;
-
 					break;
+
 				case SELECT_PRODUCT_MENU_OPTION_9:
 					vendMachine.selectProduct("C1");
 					activeMenu = PURCHASE_MENU_OPTIONS;
-
 					break;
+
 				case SELECT_PRODUCT_MENU_OPTION_10:
 					vendMachine.selectProduct("C2");
 					activeMenu = PURCHASE_MENU_OPTIONS;
-
 					break;
+
 				case SELECT_PRODUCT_MENU_OPTION_11:
 					vendMachine.selectProduct("C3");
 					activeMenu = PURCHASE_MENU_OPTIONS;
-
 					break;
+
 				case SELECT_PRODUCT_MENU_OPTION_12:
 					vendMachine.selectProduct("C4");
 					activeMenu = PURCHASE_MENU_OPTIONS;
-
 					break;
+
 				case SELECT_PRODUCT_MENU_OPTION_13:
 					vendMachine.selectProduct("D1");
 					activeMenu = PURCHASE_MENU_OPTIONS;
-
 					break;
+
 				case SELECT_PRODUCT_MENU_OPTION_14:
 					vendMachine.selectProduct("D2");
 					activeMenu = PURCHASE_MENU_OPTIONS;
-
 					break;
+
 				case SELECT_PRODUCT_MENU_OPTION_15:
 					vendMachine.selectProduct("D3");
 					activeMenu = PURCHASE_MENU_OPTIONS;
-
 					break;
+
 				case SELECT_PRODUCT_MENU_OPTION_16:
 					vendMachine.selectProduct("D4");
 					activeMenu = PURCHASE_MENU_OPTIONS;
 
 					break;
 
-// Purchase Menu Finish Transaction -> Makes change, send change back, send user back to main menu
+//Purchase Menu Finish Transaction -> Makes change, send change back, send user back to main menu
 				case PURCHASE_MENU_OPTION_FINISH_TRANSACTION:
 					vendMachine.finishTransaction();
 					activeMenu = MAIN_MENU_OPTIONS;
-// MAIN MENU Exit Option
 					break;
+//Main menu exit option
 				case MAIN_MENU_OPTION_EXIT:
 					//Exit application
 					vendMachine.exitDialogue();

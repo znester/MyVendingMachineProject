@@ -14,6 +14,9 @@ public class VendingMachine{
     private CoinBox vmCoinBox = new CoinBox();
     private Logger vmLogger;
 
+    //Default constructor
+    public VendingMachine(){};
+
     // Vending machine constructor, builds inventory
     public VendingMachine(String pathToInventoryFile) {
         File inputFile = new File(pathToInventoryFile);
