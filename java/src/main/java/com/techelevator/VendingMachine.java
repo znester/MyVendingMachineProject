@@ -98,10 +98,13 @@ public class VendingMachine{
     }
 
     //Method handles dispense message
-    public void dispenseDialog(String itemName, int itemPrice, String productType){
+    public String dispenseDialog(String itemName, int itemPrice, String productType){
         Double price = Double.valueOf(itemPrice)/100.00;
         DecimalFormat df = new DecimalFormat("0.00");
-        System.out.println("Dispensing " + itemName + ", it cost $" + df.format(price) + ".");
+
+        String outDialog = "Dispensing " + itemName + ", it cost $" + df.format(price) + ".";
+        System.out.println(outDialog);
+
         this.displayAmountInMachine();
         //Handles different messages for product types
         if(productType.equals("Chip")){
@@ -115,6 +118,8 @@ public class VendingMachine{
         }else{
             System.out.println("Yum!");
         }
+
+        return outDialog;
     }
 
     //Method shows money in machine during the current transaction
