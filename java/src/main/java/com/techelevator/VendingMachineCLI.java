@@ -10,8 +10,6 @@ public class VendingMachineCLI {
 	private static final String MAIN_MENU_OPTION_DISPLAY_ITEMS = "Display Vending Machine Items";
 	private static final String MAIN_MENU_OPTION_PURCHASE = "Purchase";
 	private static final String MAIN_MENU_OPTION_EXIT = "Exit";
-	//Attempt at creating "hidden" menu for sales report
-	private static final String MAIN_MENU_OPTION_HIDDEN_SALES_REPORT = "";//**********************
 
 	//Purchase menu Options
 	private static final String PURCHASE_MENU_OPTION_FEED_MONEY = "Feed Money";

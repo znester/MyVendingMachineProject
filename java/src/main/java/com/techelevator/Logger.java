@@ -21,9 +21,8 @@ public class Logger {
         this.PATH_TO_LOG_FILE = pathToLogFile;
         this.LOG_FILE = new File(pathToLogFile);
 
-       try{ if(LOG_FILE.createNewFile()){ //creates new log file if it does not already exist, can delete this if statement later
-
-        }
+       try{ LOG_FILE.createNewFile();{ //creates new log file if it does not already exist, can delete this if statement later
+       }
        } catch (IOException ioEx){
            System.out.println("I/O exception");
        }
