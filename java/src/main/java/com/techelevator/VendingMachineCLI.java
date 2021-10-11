@@ -68,9 +68,11 @@ public class VendingMachineCLI {
 	public void run() {
 		VendingMachine vendMachine = new VendingMachine("vendingmachine.csv"); //create the vending machine
 
-		System.out.println("*****************************");
-		System.out.println("*******Vendomatic-4000*******");
-		System.out.println("*****************************");
+		System.out.println("-----------------------------");
+		System.out.println("|                           |");
+		System.out.println("|      Vendomatic4000       |");
+		System.out.println("|                           |");
+		System.out.println("-----------------------------");
 
 		String[] activeMenu = MAIN_MENU_OPTIONS;
 		while (true) {
