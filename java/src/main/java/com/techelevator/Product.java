@@ -7,22 +7,19 @@ public class Product {
     private int price;
     private String productType;
 
-    //Getters and Setters
+    //Getters
     public String getName() {
         return name;
-    }
-    public void setName(String name) {
-        this.name = name;
     }
     public int getPrice() {
         return price;
     }
-    public void setPrice(int price) {
-        this.price = price;
-    }
     public String getProductType() {
         return productType;
     }
+
+    //Default constructor
+    public Product(){}
 
     //Overload constructor
     public Product(String name, String price, String productType){
@@ -31,6 +28,4 @@ public class Product {
         double priceDbl = Double.parseDouble(price);
         this.price = (int)(priceDbl*100);
     }
-    //Default constructor
-    public Product(){}
 }

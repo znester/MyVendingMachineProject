@@ -1,11 +1,5 @@
 package com.techelevator;
-
-import com.sun.source.tree.NewArrayTree;
 import com.techelevator.view.Menu;
-
-import java.awt.*;
-import java.lang.reflect.Constructor;
-import java.util.Scanner;
 
 public class VendingMachineCLI {
 
@@ -17,7 +11,7 @@ public class VendingMachineCLI {
 	private static final String MAIN_MENU_OPTION_PURCHASE = "Purchase";
 	private static final String MAIN_MENU_OPTION_EXIT = "Exit";
 	//Attempt at creating "hidden" menu for sales report
-	private static final String MAIN_MENU_OPTION_HIDDEN_SALES_REPORT = "";
+	private static final String MAIN_MENU_OPTION_HIDDEN_SALES_REPORT = "";//**********************
 
 	//Purchase menu Options
 	private static final String PURCHASE_MENU_OPTION_FEED_MONEY = "Feed Money";
@@ -80,133 +74,164 @@ public class VendingMachineCLI {
 		while (true) {
 			String userChoice = (String) MENU.getChoiceFromOptions(activeMenu);
 
-			if (userChoice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
-				// display vending machine items
-				vendMachine.displayItems();
+			switch (userChoice) {
+				case MAIN_MENU_OPTION_DISPLAY_ITEMS:
+					// display vending machine items
+					vendMachine.displayItems();
 
-			} else if (userChoice.equals(MAIN_MENU_OPTION_PURCHASE)) {
-				// Make active menu purchase menu
-				activeMenu = PURCHASE_MENU_OPTIONS;
+					break;
+				case MAIN_MENU_OPTION_PURCHASE:
+					// Make active menu purchase menu
+					activeMenu = PURCHASE_MENU_OPTIONS;
 
-			} else if(userChoice.equals(PURCHASE_MENU_OPTION_FEED_MONEY)) {
-				activeMenu = FEED_MENU_OPTIONS;
-				System.out.println();
-				vendMachine.displayAmountInMachine();//Shows current amount in machine
+					break;
+				case PURCHASE_MENU_OPTION_FEED_MONEY:
+					activeMenu = FEED_MENU_OPTIONS;
+					System.out.println();
+					vendMachine.displayAmountInMachine();//Shows current amount in machine
 
-			} else if(userChoice.equals(FEED_MONEY_MENU_OPTION_ONE)) {
-				vendMachine.feedMoney(100);
-				activeMenu = PURCHASE_MENU_OPTIONS;
-				System.out.println();
-				vendMachine.displayAmountInMachine();//Shows current amount in machine
 
-			} else if(userChoice.equals(FEED_MONEY_MENU_OPTION_TWO)) {
-				vendMachine.feedMoney(200);
-				activeMenu = PURCHASE_MENU_OPTIONS;
-				System.out.println();
-				vendMachine.displayAmountInMachine();//Shows current amount in machine
+					break;
+				case FEED_MONEY_MENU_OPTION_ONE:
+					vendMachine.feedMoney(100);
+					activeMenu = PURCHASE_MENU_OPTIONS;
+					System.out.println();
+					vendMachine.displayAmountInMachine();//Shows current amount in machine
 
-			} else if(userChoice.equals(FEED_MONEY_MENU_OPTION_FIVE)) {
-				vendMachine.feedMoney(500);
-				activeMenu = PURCHASE_MENU_OPTIONS;
-				System.out.println();
-				vendMachine.displayAmountInMachine();//Shows current amount in machine
 
-			} else if(userChoice.equals(FEED_MONEY_MENU_OPTION_TEN)) {
-				vendMachine.feedMoney(1000);
-				activeMenu = PURCHASE_MENU_OPTIONS;
-				System.out.println();
-				vendMachine.displayAmountInMachine();//Shows current amount in machine
+					break;
+				case FEED_MONEY_MENU_OPTION_TWO:
+					vendMachine.feedMoney(200);
+					activeMenu = PURCHASE_MENU_OPTIONS;
+					System.out.println();
+					vendMachine.displayAmountInMachine();//Shows current amount in machine
 
-			} else if(userChoice.equals(FEED_MONEY_MENU_OPTION_TO_RETURN_TO_PURCHASE_MENU)) {
-				activeMenu = PURCHASE_MENU_OPTIONS;
-				System.out.println();
-				vendMachine.displayAmountInMachine();//Shows current amount in machine
 
-			} else if(userChoice.equals(PURCHASE_MENU_OPTION_SELECT_PRODUCT)) {
-				activeMenu = SELECT_PRODUCT_OPTIONS;
+					break;
+				case FEED_MONEY_MENU_OPTION_FIVE:
+					vendMachine.feedMoney(500);
+					activeMenu = PURCHASE_MENU_OPTIONS;
+					System.out.println();
+					vendMachine.displayAmountInMachine();//Shows current amount in machine
 
-		//Select Product Options _> I.e "A1" - "D4"
-				vendMachine.displayItems();
-				System.out.println();
-				vendMachine.displayAmountInMachine();
 
-			} else if(userChoice.equals(SELECT_PRODUCT_MENU_OPTION_1)){
-				vendMachine.selectProduct("A1");
-				activeMenu = PURCHASE_MENU_OPTIONS;
+					break;
+				case FEED_MONEY_MENU_OPTION_TEN:
+					vendMachine.feedMoney(1000);
+					activeMenu = PURCHASE_MENU_OPTIONS;
+					System.out.println();
+					vendMachine.displayAmountInMachine();//Shows current amount in machine
 
-			} else if(userChoice.equals(SELECT_PRODUCT_MENU_OPTION_2)){
-				vendMachine.selectProduct("A2");
-				activeMenu = PURCHASE_MENU_OPTIONS;
 
-			} else if(userChoice.equals(SELECT_PRODUCT_MENU_OPTION_3)){
-				vendMachine.selectProduct("A3");
-				activeMenu = PURCHASE_MENU_OPTIONS;
+					break;
+				case FEED_MONEY_MENU_OPTION_TO_RETURN_TO_PURCHASE_MENU:
+				case SELECT_PRODUCT_MENU_OPTION_RETURN_PURCHASE_MENU:
+					activeMenu = PURCHASE_MENU_OPTIONS;
+					System.out.println();
+					vendMachine.displayAmountInMachine();//Shows current amount in machine
 
-			} else if(userChoice.equals(SELECT_PRODUCT_MENU_OPTION_4)){
-				vendMachine.selectProduct("A4");
-				activeMenu = PURCHASE_MENU_OPTIONS;
 
-			} else if(userChoice.equals(SELECT_PRODUCT_MENU_OPTION_5)){
-				vendMachine.selectProduct("B1");
-				activeMenu = PURCHASE_MENU_OPTIONS;
+					break;
+				case PURCHASE_MENU_OPTION_SELECT_PRODUCT:
+					activeMenu = SELECT_PRODUCT_OPTIONS;
 
-			} else if(userChoice.equals(SELECT_PRODUCT_MENU_OPTION_6)){
-				vendMachine.selectProduct("B2");
-				activeMenu = PURCHASE_MENU_OPTIONS;
+					//Select Product Options _> I.e "A1" - "D4"
+					vendMachine.displayItems();
+					System.out.println();
+					vendMachine.displayAmountInMachine();
 
-			} else if(userChoice.equals(SELECT_PRODUCT_MENU_OPTION_7)){
-				vendMachine.selectProduct("B3");
-				activeMenu = PURCHASE_MENU_OPTIONS;
+					break;
+				case SELECT_PRODUCT_MENU_OPTION_1:
+					vendMachine.selectProduct("A1");
+					activeMenu = PURCHASE_MENU_OPTIONS;
 
-			} else if(userChoice.equals(SELECT_PRODUCT_MENU_OPTION_8)){
-				vendMachine.selectProduct("B4");
-				activeMenu = PURCHASE_MENU_OPTIONS;
+					break;
+				case SELECT_PRODUCT_MENU_OPTION_2:
+					vendMachine.selectProduct("A2");
+					activeMenu = PURCHASE_MENU_OPTIONS;
 
-			} else if(userChoice.equals(SELECT_PRODUCT_MENU_OPTION_9)){
-				vendMachine.selectProduct("C1");
-				activeMenu = PURCHASE_MENU_OPTIONS;
+					break;
+				case SELECT_PRODUCT_MENU_OPTION_3:
+					vendMachine.selectProduct("A3");
+					activeMenu = PURCHASE_MENU_OPTIONS;
 
-			} else if(userChoice.equals(SELECT_PRODUCT_MENU_OPTION_10)){
-				vendMachine.selectProduct("C2");
-				activeMenu = PURCHASE_MENU_OPTIONS;
+					break;
+				case SELECT_PRODUCT_MENU_OPTION_4:
+					vendMachine.selectProduct("A4");
+					activeMenu = PURCHASE_MENU_OPTIONS;
 
-			} else if(userChoice.equals(SELECT_PRODUCT_MENU_OPTION_11)){
-				vendMachine.selectProduct("C3");
-				activeMenu = PURCHASE_MENU_OPTIONS;
+					break;
+				case SELECT_PRODUCT_MENU_OPTION_5:
+					vendMachine.selectProduct("B1");
+					activeMenu = PURCHASE_MENU_OPTIONS;
 
-			} else if(userChoice.equals(SELECT_PRODUCT_MENU_OPTION_12)){
-				vendMachine.selectProduct("C4");
-				activeMenu = PURCHASE_MENU_OPTIONS;
+					break;
+				case SELECT_PRODUCT_MENU_OPTION_6:
+					vendMachine.selectProduct("B2");
+					activeMenu = PURCHASE_MENU_OPTIONS;
 
-			} else if(userChoice.equals(SELECT_PRODUCT_MENU_OPTION_13)){
-				vendMachine.selectProduct("D1");
-				activeMenu = PURCHASE_MENU_OPTIONS;
+					break;
+				case SELECT_PRODUCT_MENU_OPTION_7:
+					vendMachine.selectProduct("B3");
+					activeMenu = PURCHASE_MENU_OPTIONS;
 
-			} else if(userChoice.equals(SELECT_PRODUCT_MENU_OPTION_14)){
-				vendMachine.selectProduct("D2");
-				activeMenu = PURCHASE_MENU_OPTIONS;
+					break;
+				case SELECT_PRODUCT_MENU_OPTION_8:
+					vendMachine.selectProduct("B4");
+					activeMenu = PURCHASE_MENU_OPTIONS;
 
-			} else if(userChoice.equals(SELECT_PRODUCT_MENU_OPTION_15)){
-				vendMachine.selectProduct("D3");
-				activeMenu = PURCHASE_MENU_OPTIONS;
+					break;
+				case SELECT_PRODUCT_MENU_OPTION_9:
+					vendMachine.selectProduct("C1");
+					activeMenu = PURCHASE_MENU_OPTIONS;
 
-			} else if(userChoice.equals(SELECT_PRODUCT_MENU_OPTION_16)){
-				vendMachine.selectProduct("D4");
-				activeMenu = PURCHASE_MENU_OPTIONS;
+					break;
+				case SELECT_PRODUCT_MENU_OPTION_10:
+					vendMachine.selectProduct("C2");
+					activeMenu = PURCHASE_MENU_OPTIONS;
 
-			} else if(userChoice.equals(SELECT_PRODUCT_MENU_OPTION_RETURN_PURCHASE_MENU)){
-				activeMenu = PURCHASE_MENU_OPTIONS;
-				System.out.println();
-				vendMachine.displayAmountInMachine();//Shows current amount in machine
+					break;
+				case SELECT_PRODUCT_MENU_OPTION_11:
+					vendMachine.selectProduct("C3");
+					activeMenu = PURCHASE_MENU_OPTIONS;
+
+					break;
+				case SELECT_PRODUCT_MENU_OPTION_12:
+					vendMachine.selectProduct("C4");
+					activeMenu = PURCHASE_MENU_OPTIONS;
+
+					break;
+				case SELECT_PRODUCT_MENU_OPTION_13:
+					vendMachine.selectProduct("D1");
+					activeMenu = PURCHASE_MENU_OPTIONS;
+
+					break;
+				case SELECT_PRODUCT_MENU_OPTION_14:
+					vendMachine.selectProduct("D2");
+					activeMenu = PURCHASE_MENU_OPTIONS;
+
+					break;
+				case SELECT_PRODUCT_MENU_OPTION_15:
+					vendMachine.selectProduct("D3");
+					activeMenu = PURCHASE_MENU_OPTIONS;
+
+					break;
+				case SELECT_PRODUCT_MENU_OPTION_16:
+					vendMachine.selectProduct("D4");
+					activeMenu = PURCHASE_MENU_OPTIONS;
+
+					break;
+
 // Purchase Menu Finish Transaction -> Makes change, send change back, send user back to main menu
-			} else if (userChoice.equals(PURCHASE_MENU_OPTION_FINISH_TRANSACTION)) {
-				vendMachine.finishTransaction();
-				activeMenu = MAIN_MENU_OPTIONS;
+				case PURCHASE_MENU_OPTION_FINISH_TRANSACTION:
+					vendMachine.finishTransaction();
+					activeMenu = MAIN_MENU_OPTIONS;
 // MAIN MENU Exit Option
-			} else if (userChoice.equals(MAIN_MENU_OPTION_EXIT)) {
-				//Exit application
-				vendMachine.exitDialogue();
-				System.exit(1);
+					break;
+				case MAIN_MENU_OPTION_EXIT:
+					//Exit application
+					vendMachine.exitDialogue();
+					System.exit(1);
 			}
 		}
 	}

@@ -51,7 +51,7 @@ public class VendingMachine{
                 //Formats display to look nice
                 System.out.printf("%s| %-18s | $ %s | %s %n", entry.getKey(), itemName, df.format(price), stackDisplaySize);
             } else {
-                System.out.println(entry.getKey() + "| is out of stock.   |        | 0");
+                System.out.println(entry.getKey() + "| Item out of stock  | ****** | 0");
             }
         }
     }
@@ -69,12 +69,11 @@ public class VendingMachine{
                 String nameOfProduct = inventory.get(slotIdentifier).peek().getName();//gets name of product
                 int moneyBefore = vmCoinBox.getMoneyDeposited(); // money before subtracted by cost of product
                 vmCoinBox.spend(inventory.get(slotIdentifier).peek().getPrice()); //=money deposited - price of product
-                this.dispenseDialog(inventory.get(slotIdentifier).peek().getName(),inventory.get(slotIdentifier).peek().getPrice(),
-                        inventory.get(slotIdentifier).peek().getProductType());
+                this.dispenseDialog(inventory.get(slotIdentifier).peek().getName(),inventory.get(slotIdentifier).peek().getPrice(), inventory.get(slotIdentifier).peek().getProductType());
                 inventory.get(slotIdentifier).pop();  //if enough money, dispensed
                 vmLogger.logTransaction(nameOfProduct, moneyBefore, vmCoinBox.getMoneyDeposited()); //Logs transaction
             } else {
-                System.out.println("Not enough money.");
+                System.out.println("Please insert more money to make purchase");
             }
         } else {
             System.out.println("SOLD OUT");

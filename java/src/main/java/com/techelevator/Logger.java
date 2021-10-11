@@ -2,19 +2,17 @@ package com.techelevator;
 
 import java.io.*;
 import java.text.DecimalFormat;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
 
 public class Logger {
 
     //Instance variables
     private final String PATH_TO_LOG_FILE;
     private final File LOG_FILE;
-    //Need another file for "Sales Report"
+    //Need another file for "Sales Report" if we do it
 
-    //Constructor
+    //Default constructor
     public Logger(String pathToLogFile, File logFile) {
         this.PATH_TO_LOG_FILE = pathToLogFile;
         this.LOG_FILE = logFile;
@@ -67,5 +65,4 @@ public class Logger {
             System.out.println("Something can go wrong");
         }
     }
-
 }
